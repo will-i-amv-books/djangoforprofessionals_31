@@ -19,9 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    # Sign-up is not built-in in 'django.contrib.auth', 
-    # so we have to implement it by ourselves in 'accounts' app.
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')), 
     path('', include('pages.urls')),
 ]
