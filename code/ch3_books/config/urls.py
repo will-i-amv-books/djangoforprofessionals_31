@@ -25,6 +25,7 @@ media_urls = static(
 )
 urlpatterns = [
     *media_urls,
+    # Change url of admin for production, or add 2-factor auth with 'django-two-factor-auth'
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')), 
     path('books/', include('books.urls')),
