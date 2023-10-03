@@ -29,9 +29,10 @@ class SearchResultsListView(ListView):
     template_name = 'books/search_results.html'
 
     def get_queryset(self):
+        query = self.request.GET.get('q')
         return (
             Book.objects
             .filter(
-                Q(title__icontains='beginners') | Q(title__icontains='api')
+                Q(title__icontains=query) | Q(title__icontains=query)
             )
         )
