@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import socket
 from pathlib import Path
 
 from environs import Env
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'crispy_forms',
+    'debug_toolbar',
 
     # Local
     'accounts',
@@ -63,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -163,3 +166,7 @@ AUTHENTICATION_BACKENDS = (
 )
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+
+# django-debug-toolbar
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]

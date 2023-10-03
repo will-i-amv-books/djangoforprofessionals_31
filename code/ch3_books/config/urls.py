@@ -30,3 +30,11 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('', include('pages.urls')),
 ]
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = (
+        [
+            path('__debug__/', include(debug_toolbar.urls)),
+        ] + 
+        urlpatterns
+    )
