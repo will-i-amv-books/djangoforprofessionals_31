@@ -140,3 +140,6 @@ configuration.cfg
 *.png
 *.dot
 *.db
+
+# docker-compose for production
+docker-compose-prod.yml
