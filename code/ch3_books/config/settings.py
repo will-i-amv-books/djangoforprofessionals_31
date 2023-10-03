@@ -34,7 +34,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # Calling env("DJANGO_DEBUG") returns 'True' or 'False' as strings not bools,
 # so an equality check is added below.
-DEBUG = env("DJANGO_DEBUG") == 'True'
+DEBUG = env.bool("DJANGO_DEBUG", default=False)
 ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
